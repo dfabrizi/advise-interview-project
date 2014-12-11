@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<Title>Create Account</title>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+<h1> Create Account </h1>
+<form class="account-form">
+First Name: <br><input type="text" name="first name" required>
+<br>
+Last Name: <br><input type="text" name="last name" required>
+<br>
+Department: <br><select required>
+<option value="Management">Management</option>
+<option value="Human Resources">H.R.</option>
+<option value="Finances">Finances</option>
+<option value="Engineering">Engineering</option>
+<option value="Sales">Sales</option>
+</select>
+<br>
+Position: <br><input type="text" name="Position" required>
+<br>
+Email: <br><input type="email" name="Email" formmethod="POST" required>
+<br>
+Confirm Email: <br><input type="email" name="Confirm_Email" required>
+<br>
+UserName: <br><input type="text" name="UserName" formmethod="POST" required>
+<br>
+Password: <br><input type="Password" name="Password" min="6" required>
+<br>
+Confirm Password: <br><input type="Password" name="Confirm_Password" required>
+<br>
+<input type="submit" name="Submit" action="./Login.html" required>
+</form>
+<!-- The following tests that email and password match
+their respective confirmations. Also tests if email has 
+Advise Technologies domain -->
+<script>
+$('.account-form').submit(function (event) {
+	var email= $('form [name="Email"]').val();
+	var cemail= $('form [name="Confirm_Email"]').val();
+	
+	var password = $('form [name="Password"]').val();
+	var cpassword = $('form [name="Confirm_Password"]').val();
+	
+	var atInd = $('form [name="Email"]').val().indexOf("@advisetechnologies.com");
+
+	if (email !== cemail){
+		event.preventDefault();
+		$('form').append("<p>Emails don't match.</p>");
+	}
+
+	if (password !== cpassword){
+		event.preventDefault();
+		$('form').append("<p>Passwords don't match.</p>");
+	}	
+	
+	if (atInd === -1) {
+		event.preventDefault();
+		$('form').append("<p>Not a company email.</p>");
+
+});
+</script>
+</body>
+</html>
