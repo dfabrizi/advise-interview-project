@@ -2,23 +2,40 @@
 <html>
 <head>
 <title> Advise Interview Login </title>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
-<h1> LOGIN</h1>
-<form>
-UserName: 
-<input type="text" name="UserName">
+<h1>LOGIN</h1>
+<div class="login-box">
+UserName:<input class="usr" type="text" name="UserName">
 <br>
-Password: 
-<input type="text" name="Password">
+Password: <input class="psw" type="Password" name="Password">
 <br>
-<input type="Submit" value="Submit">
-</form>
+<button onclick="login()">Submit</button>
+</div>
+<script>
+var login = function () {
+	var username = $('.usr').val();
+	var password = $('.psw').val();
+	console.log(username, password);
+	$.ajax({
+		type: 'POST',
+		url: "http://localhost:5000/login",
+		data: {'username': username, 'password': password}
+	}).done(function (res) {
+		console.log(res);
+		if (res === "login accepted") {
+			document.cookie = "username=" + username;
+			window.location.href="http://localhost:5000/interviews";
+		} else {
+			$('.login-box').append("<p style='color: red'> Username/Password combination incorrect</p>");
+			}
+	})
+}
+</script>
 <a href="/forgot"> Forgot Password? </a>
 <br>
 <a href="/Account"> Create Account</a>
-<br>
-<input type="submit" name="Submit" required>
 </form>
 </body>
 <html>

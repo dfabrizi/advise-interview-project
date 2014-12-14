@@ -2,13 +2,24 @@
  <html>
  <head>
  <title>Interviews</title>
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script> 
+function checkCookie() {
+    var username=getCookie("username");
+    if (username!="") {
+        window.location.href="http://localhost:5000/interviews;
+    }else{
+        window.location.href="http://localhost:5000/login"
+        }
+    } 
+</script>
  </head>
  <body>
- <h1>Interviews<h1>
- <p>LIST OF INTERVIEWS AND LINKS TO THEM<p>
- <!-- RETRIEVE INTERVIEWS AND STORE LINKS HERE -->
-<h3><a href="/New_Interview">New Interview</a></h3>
+ <h1>Interviews</h1>
+ <h2>Old Interviews</h2>
+  <!-- RETRIEVE INTERVIEWS AND STORE LINKS HERE -->
+ <h2>New Interviews</h2>
+<p><a href="/Interviews/jrsqldev" onclick="checkCookie()">New Interview - Junior SQL Developer</a></p>
+<p><a href="/Interviews/midlevel_dev" onclick="checkCookie()">New Interview - Mid-Level C#/SQL Developer</a></p>
  </body>
- 
  </html>

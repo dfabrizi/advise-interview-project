@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Mid-Level C#/SQL Developer Interview</title>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script> 
+function checkCookie() {
+    var username=getCookie("username");
+    if (username!="") {
+        window.location.href="http://localhost:5000/interviews/midlevel_dev;
+    }else{
+        window.location.href="http://localhost:5000/login"
+        }
+    } 
+</script>
+</head>
+<body>
+<h1>Mid-Level C#/SQL Developer Interview</h1>
+<form class="midlevel-form">
+Candidate Name: <br><input type="text" name="candidate" required>
+<br>
+Candidate Email: <br><input type="text" name="candidate_email" required>
+<br>
+Candidate Phone Number: <br><input type="number" name="candidate_phone" required>
+<br>
+How many years of relevant experience do you have?: <br>
+<input type="number" name="years_experience" required>
+<br>
+How fluent are you in C#/.NET?: <br><input type="text" name="c_sharp_fluency" required>
+<br>
+Do you have a solid SQL knowledge base?: <br><input type=text" name="sql_base" required>
+<br>
+How is your facility with large datasets?: <br>
+<input type="text" name="facility_large_datasets" required>
+<br>
+What is your greatest weakness?: <br><input type="text" name="weaknesses" required>
+<br>
+Why do you want to work for Advise Technologies?: <br>
+<input type="text" name="why_advise" required>
+<br>
+Do you have any questions about the position or the company?: <br>
+<input type="text" name="questions" required>
+<br>
+<input type="submit" name="Submit" formaction="/interviews">
+</form>
+</body>
+</html>
