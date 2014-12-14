@@ -49,6 +49,13 @@ def account():
 		c.execute("""insert into users(email, username, passhash) values(?, ?, ?)""", [email, user, password])
 		c.execute("""select * from users""")
 
+@app.route('/new-account')
+def new_account():
+			return render_template("Account.html")
+			
+@app.route('/forgot')
+def forgot():
+	return render_template('Forgot.html')
 
 # Views
 @app.route('/interviews/jrsqldev', methods=["GET", "POST"])
