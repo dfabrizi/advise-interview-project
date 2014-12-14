@@ -49,9 +49,21 @@ def account():
 		c.execute("""insert into users(email, username, passhash) values(?, ?, ?)""", [email, user, password])
 		c.execute("""select * from users""")
 
-@app.route('/new-account')
+@app.route('/new-account', methods=["GET", "POST"])
 def new_account():
+		if request.method == "POST":
+			em = request.form['Email']
+			user = request.form['UserName']
+			passhash = passHash(request.form['Password'])
+			con = sqlite3.connect('interviewer.db')
+			c = con.cursor()
+			c.execute("""insert into users(email, username, passhash) values(?, ?, ?)""", [em, user, passhash])
+			con.commit()
+			return render_template('Login.html')
+			con.close()
+		else:
 			return render_template("Account.html")
+			
 			
 @app.route('/forgot')
 def forgot():
@@ -76,9 +88,9 @@ def jrsqldev():
 		con = sqlite3.connect('interviewer.db')
 		c = con.cursor()
 		c.execute("""insert into jrsqldev_interview (candidate, candidate_email, candidate_phone, database_fundamentals, enterprise__years_experience, query_optimization, facility_large_datasets, notions_n_tier_architecture,
-		ETL_processes, why_advise, weaknesses, questions) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""", 
+		ETL_processes, why_advise, weaknesses, questions) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""", 
 		[cand, cem, cphone, dbfund, entexp, qopt, largdat, ntier, ETL, whyadv, weak, quest])
-		c.execute("""select * from jrsqldev""")
+		#c.execute("""select * from jrsqldev""")
 		con.commit()
 		return render_template('interviews.html')
 		con.close()
@@ -101,9 +113,9 @@ def midlevel_dev():
 		con = sqlite3.connect('interviewer.db')
 		c = con.cursor()
 		c.execute("""insert into midlevel_dev_interview (candidate, candidate_email, candidate_phone, years_experience,
-		c_sharp_fluency, sql_base, facility_large_datasets, weaknesses, why_advise, questions) valyes (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+		c_sharp_fluency, sql_base, facility_large_datasets, weaknesses, why_advise, questions) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
 		[cand, cem, cphone, exp, cflu, sql, large, weak, whyadv, quest])
-		c.execute("""select * from midlevel_dev""")
+		c.execute("""select * from midlevel_dev_interview""")
 		con.commit()
 		return render_template("interviews.html.")
 		con.close()
