@@ -223,3 +223,9 @@ Lib
 Include
 Scripts
 
+# interview
+.Python
+lib
+include
+bin
+
