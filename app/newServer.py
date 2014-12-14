@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Request, request
+from flask import Flask, render_template, Request, request, redirect, url_for
 from flask.ext import login
 import sqlite3
 import hashlib
@@ -91,7 +91,7 @@ def jrsqldev():
 		#c.execute("""select * from jrsqldev""")
 		con.commit()
 		con.close()
-		return render_template('Interviews.html')
+		return redirect(url_for('Interviews'))
 	else:
 		return render_template('jrsqldev_interview.html')
 	
@@ -115,7 +115,7 @@ def midlevel_dev():
 		[cand, cem, cphone, exp, cflu, sql, large, weak, whyadv, quest])
 		#c.execute("""select * from midlevel_dev""")
 		con.commit()
-		return render_template("Interviews.html")
+		return redirect(url_for('Interviews'))
 		con.close()
 	else:
 		return render_template('midlevel_dev_interview.html')
