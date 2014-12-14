@@ -49,16 +49,8 @@ def account():
 		c.execute("""insert into users(email, username, passhash) values(?, ?, ?)""", [email, user, password])
 		c.execute("""select * from users""")
 
-<<<<<<< HEAD
-=======
-def passHash(pwd):
-	spwd = str(spwd)
-	return hashlib.sha256(pwd).hexdigest()
->>>>>>> 87b282623bb407885c5e1a60a25bbd0c40b88c77
 
 # Views
-
-
 @app.route('/interviews/jrsqldev', methods=["GET", "POST"])
 def jrsqldev():
 	if request.method == 'POST':
