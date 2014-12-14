@@ -13,10 +13,31 @@ function checkCookie() {
         }
     } 
 </script>
- </head>
- <body onpageshow="checkCookie()">
+</head>
+<body>
+ 
  <h1>Interviews</h1>
  <h2>Old Interviews</h2>
+ {% if jr %}
+ 	<h3>Jr Interviews</h3>
+ 	<ol>
+ 	{% for r in jr %}
+ 		<li><a href="/interviews/loaded_form/{{r['candidate']}}{{1}}">{{r['candidate']}}</a></li>
+ 	{% endfor %}
+ 	</ol>
+ {% endif %}
+ 
+ {% if mid %}
+ 	<h3>Mid Level Interviews</h3>
+ 	 	<ol>
+ 	{% for r in mid %}
+ 		<li><a href="/interviews/loaded_form/{{r['candidate']}}{{2}}">{{r['candidate']}}</a></li>
+ 	{% endfor %}
+ 	 	</ol>
+ {% endif %}
+  <!-- RETRIEVE INTERVIEWS AND STORE LINKS HERE -->
+  
+  
  <h2>New Interviews</h2>
 <p><a href="/interviews/jrsqldev" onclick="checkCookie()">New Interview - Junior SQL Developer</a></p>
 <p><a href="/interviews/midlevel_dev" onclick="checkCookie()">New Interview - Mid-Level C#/SQL Developer</a></p>

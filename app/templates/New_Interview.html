@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title> New Interview </title>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+<h1> New Interview </h1>
+<form class="interview-form">
+Date: <br><input type="date" name="date" required>
+<br>
+Interviewer Name: <br><input type="text" name="Interviewer Name" required>
+<br>
+Interview Site: <br><select required>
+<option value="New York Offices">New York Offices</option>
+<option value="New Hyde Park Offices">New Hyde Park Offices</option>
+<option value="London Offices">London Offices</option>
+<option value="On-Campus Interview">On-Campus Interview</option>
+<option value="Other">Other</option>
+</select>
+<br>
+Applicant Name: <br><input type="text" name="App name" required>
+<br>
+Applicant Email: <br><input type="email" name="App Email" required>
+<br>
+Applicant Phone: <br><input type="number" name="App Phone" min="1000000000" max="9999999999">
+<br>
+Applicant Permanent Address:<br><input type="text">
+<br>
+Department of Interest: <br><select required>
+<option value="Management">Management</option>
+<option value="Human Resources">H.R.</option>
+<option value="Finances">Finances</option>
+<option value="Engineering">Engineering</option>
+<option value="Sales">Sales</option>
+</select>
+<br>
+Position of Interest: <br><select required>
+<option value="Position A">Position A</option>
+<option value="Position B">Position B</option>
+<option value="Position C">Position C</option>
+<option value="Position D">Position D</option>
+</select>
+<br>
+Why are you interested in Advise Technologies?<br><input type="text" name="interest" required>
+<br>
+What are your strengths?<br><input type="text" name="strengths" required>
+<br>
+What is your greatest weakness?<br><input type="text" name="weaknesses" required>
+<br>
+What skill sets do you possess?<br><input type="text" name="skills" required>
+<br>
+How many years of experience do you have with XXXX?<br><input type="text" name="experience" required>
+<br>
+Do you have any experience in the Hedge Fund Industry?<br>
+<input type="radio" name="hedge_experience" value="Yes">Yes
+<br>
+<input type="radio" name="hedge_experience" value="No">No
+<br>
+<input type="submit" name="Submit" formaction="/interviews">
+</form>
+</body>
+</html>

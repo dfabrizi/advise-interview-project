@@ -8,6 +8,13 @@ app = Flask(__name__)
 def passHash(pwd):
 	spwd = str(pwd)
 	return hashlib.sha256(spwd).hexdigest()
+	
+	
+def dict_factory(cursor, row):
+    d = {}
+    for idx, col in enumerate(cursor.description):
+        d[col[0]] = row[idx]
+    return d
 
 # Views
 @app.route('/')
@@ -28,15 +35,25 @@ def login():
 		dbpasshash=c.fetchone()
 		con.close()
 		if dbpasshash[0] == ph:
-			return "login accepted"
+			message = "login accepted"
+			return message
 		else:
-			return "login refused"
+			message = "login denied"
+			return message
 	else:
-		return render_template('login.html')
+		return render_template('Login.html')
 
 @app.route('/interviews')
 def Interviews():
-	return render_template("Interviews.html")
+	con = sqlite3.connect('interviewer.db')
+	con.row_factory = dict_factory
+	c=con.cursor()
+	c.execute("""SELECT * FROM jrsqldev_interview""")
+	resultsjr = c.fetchall()
+	c.execute("""SELECT * FROM midlevel_dev_interview""")
+	resultsmid = c.fetchall()
+	con.close()
+	return render_template("Interviews.html", jr=resultsjr, mid=resultsmid)
 		
 @app.route('/accounts', methods=["GET", "POST"])
 def account():
@@ -49,25 +66,6 @@ def account():
 		c.execute("""insert into users(email, username, passhash) values(?, ?, ?)""", [email, user, password])
 		c.execute("""select * from users""")
 
-@app.route('/new-account', methods=["GET", "POST"])
-def new_account():
-		if request.method == "POST":
-			em = request.form['Email']
-			user = request.form['UserName']
-			passhash = passHash(request.form['Password'])
-			con = sqlite3.connect('interviewer.db')
-			c = con.cursor()
-			c.execute("""insert into users(email, username, passhash) values(?, ?, ?)""", [em, user, passhash])
-			con.commit()
-			return render_template('Login.html')
-			con.close()
-		else:
-			return render_template("Account.html")
-			
-			
-@app.route('/forgot')
-def forgot():
-	return render_template('Forgot.html')
 
 # Views
 @app.route('/interviews/jrsqldev', methods=["GET", "POST"])
@@ -88,9 +86,9 @@ def jrsqldev():
 		con = sqlite3.connect('interviewer.db')
 		c = con.cursor()
 		c.execute("""insert into jrsqldev_interview (candidate, candidate_email, candidate_phone, database_fundamentals, enterprise__years_experience, query_optimization, facility_large_datasets, notions_n_tier_architecture,
-		ETL_processes, why_advise, weaknesses, questions) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""", 
+		ETL_processes, why_advise, weaknesses, questions) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""", 
 		[cand, cem, cphone, dbfund, entexp, qopt, largdat, ntier, ETL, whyadv, weak, quest])
-		#c.execute("""select * from jrsqldev""")
+		c.execute("""select * from jrsqldev""")
 		con.commit()
 		return render_template('interviews.html')
 		con.close()
@@ -113,14 +111,34 @@ def midlevel_dev():
 		con = sqlite3.connect('interviewer.db')
 		c = con.cursor()
 		c.execute("""insert into midlevel_dev_interview (candidate, candidate_email, candidate_phone, years_experience,
-		c_sharp_fluency, sql_base, facility_large_datasets, weaknesses, why_advise, questions) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+		c_sharp_fluency, sql_base, facility_large_datasets, weaknesses, why_advise, questions) valyes (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
 		[cand, cem, cphone, exp, cflu, sql, large, weak, whyadv, quest])
-		c.execute("""select * from midlevel_dev_interview""")
+		c.execute("""select * from midlevel_dev""")
 		con.commit()
 		return render_template("interviews.html.")
 		con.close()
 	else:
 		return render_template('midlevel_dev_interview.html')
+
+#pass along an identifier based on previous section picked
+@app.route('/interviews/loaded_form/<name><int:job_id>', methods=["GET", "POST"])
+def load_form(name, job_id):
+	con = sqlite3.connect('interviewer.db')
+	con.row_factory = dict_factory
+	c=con.cursor()
+ 
+ 	#might want to use switch statement..
+ 	if job_id is 1:
+		c.execute("""SELECT * FROM jrsqldev_interview WHERE candidate=?""", [name])
+		data = c.fetchall()
+		keys = data[0].keys()	
+	elif job_id is 2:
+		c.execute("""SELECT * FROM midlevel_dev_interview WHERE candidate=?""", [name])
+		data = c.fetchall()
+		keys = data[0].keys()	
+	con.close()
+	return render_template('loaded_form.html', data=data, keys=keys)
+	
 
 # Start app
 if __name__ == '__main__':

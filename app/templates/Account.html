@@ -21,17 +21,17 @@ Department: <br><select required>
 <br>
 Position: <br><input type="text" name="Position" required>
 <br>
-Email: <br><input type="email" name="Email" required>
+Email: <br><input type="email" name="Email" formmethod="POST" required>
 <br>
 Confirm Email: <br><input type="email" name="Confirm_Email" required>
 <br>
-UserName: <br><input type="text" name="UserName" required>
+UserName: <br><input type="text" name="UserName" formmethod="POST" required>
 <br>
 Password: <br><input type="Password" name="Password" min="6" required>
 <br>
 Confirm Password: <br><input type="Password" name="Confirm_Password" required>
 <br>
-<input type="submit" name="Submit" formmethod="POST" formaction="/new-account" required>
+<input type="submit" name="Submit" formaction="/Login" required>
 </form>
 <!-- The following tests that email and password match
 their respective confirmations. Also tests if email has 

@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title>Loaded Form</title>
+</head>
+<body>
+
+{% if data %}
+	{% for i in keys %}
+		<h4>{{i}}</h4>
+			<p>{{data[0][i]}}</p>
+	{% endfor %}
+{% else %}
+	<p> no data </p>
+{% endif %}
+</body>
+</html
