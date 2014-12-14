@@ -1,0 +1,12 @@
+Flask Directions::
+
+To Start:
+	cd C:\Users\wildcat\Documents\Advise_Project
+	
+Run Virtual Environment
+	C:\Users\wildcat\Documents\Advise_Project\interview_site\Scripts\activate
+	
+To Run Website type:
+	python run.py
+	
+	
