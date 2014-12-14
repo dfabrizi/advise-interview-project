@@ -4,7 +4,7 @@ import sqlite3
 import hashlib
 
 app = Flask(__name__)
-	
+
 def passHash(pwd):
 	spwd = str(pwd)
 	return hashlib.sha256(spwd).hexdigest()
@@ -49,34 +49,11 @@ def account():
 		c.execute("""insert into users(email, username, passhash) values(?, ?, ?)""", [email, user, password])
 		c.execute("""select * from users""")
 
-def passHash(pwd):
-	spwd = str(spwd)
-	return hashlib.sha256(pwd).hexdigest()
 
 # Views
 
-@app.route('/')
-def greeting ():
-    #return 'normal string'
-    return render_template('index.html')
-    
-@app.route('/Login')
-@app.route('/accounts', methods=["GET", "POST"])
-def account():
-    if request.method == 'POST':
-		user = request.form['UserName']
-		password = passHash(request.form['Password'])
-		conn = sqlite3.connect('example.db')
-		c = conn.cursor()
-		c.execute("""insert into accounts values(?, ?)""", [user, password])
-		c.execute("""select * from accounts""")
-		conn.commit()
-		return render_template('index.html')
-		conn.close()
-    else:
-        return render_template('account.html')
 
-@app.route('/interviews/jrsqldev', methods="GET", "POST")
+@app.route('/interviews/jrsqldev', methods=["GET", "POST"])
 def jrsqldev():
 	if request.method == 'POST':
 		cand = request.form['candidate']
@@ -103,7 +80,7 @@ def jrsqldev():
 	else:
 		return render_template('jrsqldev_interview.html')
 	
-@app.route('/interviews/midlevel_dev', methods="GET", "POST")
+@app.route('/interviews/midlevel_dev', methods=["GET", "POST"])
 def midlevel_dev():
 	if request.method == 'POST':
 		cand = request.form['candidate']
@@ -131,3 +108,4 @@ def midlevel_dev():
 # Start app
 if __name__ == '__main__':
     app.run(debug=True)
+
