@@ -88,10 +88,10 @@ def jrsqldev():
 		c.execute("""insert into jrsqldev_interview (candidate, candidate_email, candidate_phone, database_fundamentals, enterprise__years_experience, query_optimization, facility_large_datasets, notions_n_tier_architecture,
 		ETL_processes, why_advise, weaknesses, questions) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""", 
 		[cand, cem, cphone, dbfund, entexp, qopt, largdat, ntier, ETL, whyadv, weak, quest])
-		c.execute("""select * from jrsqldev""")
+		#c.execute("""select * from jrsqldev""")
 		con.commit()
-		return render_template('interviews.html')
 		con.close()
+		return render_template('Interviews.html')
 	else:
 		return render_template('jrsqldev_interview.html')
 	
@@ -113,9 +113,9 @@ def midlevel_dev():
 		c.execute("""insert into midlevel_dev_interview (candidate, candidate_email, candidate_phone, years_experience,
 		c_sharp_fluency, sql_base, facility_large_datasets, weaknesses, why_advise, questions) valyes (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
 		[cand, cem, cphone, exp, cflu, sql, large, weak, whyadv, quest])
-		c.execute("""select * from midlevel_dev""")
+		#c.execute("""select * from midlevel_dev""")
 		con.commit()
-		return render_template("interviews.html.")
+		return render_template("Interviews.html")
 		con.close()
 	else:
 		return render_template('midlevel_dev_interview.html')
