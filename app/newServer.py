@@ -132,6 +132,7 @@ def load_form(name, job_id):
 		c.execute("""SELECT * FROM jrsqldev_interview WHERE candidate=?""", [name])
 		data = c.fetchall()
 		keys = data[0].keys()	
+		return render_template('jrsqldev_interview.html', data=data, keys=keys)
 	elif job_id is 2:
 		c.execute("""SELECT * FROM midlevel_dev_interview WHERE candidate=?""", [name])
 		data = c.fetchall()

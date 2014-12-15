@@ -16,6 +16,45 @@ function checkCookie() {
 </head>
 <body>
 <h1>Junior SQL Developer Interview</h1>
+
+{% if data %}
+<form class="junior-form">
+Candidate Name: <br><input type="text" name="candidate" value="{{data[0]['candidate']}}" required>
+<br>
+Candidate Email: <br><input type="text" name="candidate_email" value="{{data[0]['candidate_email']}}" required>
+<br>
+Candidate Phone Number: <br><input type="number" name="candidate_phone" value="{{data[0]['candidate_phone']}}" required>
+<br>
+What is your knowledge of Database Fundamentals?: <br>
+<input type="text" name="database_fundamentals" value="{{data[0]['database_fundamentals']}}" required>
+<br>
+How many years of real-world experience do you have with enterprise RDBMS?: <br>
+<input type="number" name="enterprise_years_experience" value="{{data[0]['enterprise_years_experience']}}" required>
+<br>
+What are your strategies for query optimization?: <br>
+<input type="text" name="query_optimization" value="{{data[0]['query_optimization']}}" required>
+<br>
+Do you have facility with large datasets?: <br>
+<input type="text" name="facility_large_datasets" value="{{data[0]['facility_large_datasets']}}" required>
+<br>
+Do you have notions of n-tier architecture?: <br>
+<input type="text" name="notions_n_tier_architecture" value="{{data[0]['notions_n_tier_architecture']}}" required>
+<br>
+Can you handle sophisticated ETL processes using multiple 3rd party data sources?: <br>
+<input type="text" name="ETL_processes" value="{{data[0]['ETL_processes']}}" required>
+<br>
+Why do you want to work for Advise Technologies?: <br>
+<input type="text" name="why_advise" value="{{data[0]['why_advise']}}" required>
+<br>
+What is your greatest weakness?: <br>
+<input type="text" name="weaknesses" value="{{data[0]['weaknesses']}}" required>
+<br>
+Do you have any questions about the position or the company?: <br>
+<input type="text" name="questions" value="{{data[0]['questions']}}">
+<br>
+<input type="submit" name="Submit" formmethod="post" formaction="/interviews/jrsqldev">
+
+{% else %}
 <form class="junior-form">
 Candidate Name: <br><input type="text" name="candidate" required>
 <br>
@@ -51,6 +90,8 @@ Do you have any questions about the position or the company?: <br>
 <input type="text" name="questions">
 <br>
 <input type="submit" name="Submit" formmethod="post" formaction="/interviews/jrsqldev">
+
+{% endif %}
 </form>
 </body>
 </html>
