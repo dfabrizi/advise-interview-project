@@ -3,14 +3,30 @@ Launch Instructions:
 Installing
 ==========
 1. Install python 2.7.9 : https://www.python.org/downloads/
+2. Install pip (python package installer): https://bootstrap.pypa.io/get-pip.py 
+then open the pip file
+3. Move the file "get-pip.py" to the "app" folder within the "advise-interview-project" folder
 2. In command line (i.e. windows powershell), navigate to directory 
-where "advise-interview-project" folder is stored
+where "advise-interview-project" folder is stored, then navigate to the app folder within.
 3. Run python in command line (i.e. windows powershell): using the command "python"
-4. Install flask (while running python): using the command "pip install Flask"
-5. Install Virtual Environment: using the command "pip install virtualenv"
-6. Exit python: using  the command ctrl+"c"
+4. If the "python" command isn't working, then in the command line (i.e. powershell), enter
+this: [Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27", "User")
+
+Then try the "python" command again.
+
+This should start to run python, and give you something like this:
+
+Python 2.7.9 (default, Jun 30 1014, 16:03:49) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+
+Exit python: using  the command ctrl+"c"
+4. Install flask: using the command "python -m pip install Flask"
+5. Install Virtual Environment: using the command "python -m pip install virtualenv"
 7. Run virtual environment by changing directory, specifying entire path through:
 /advise-interview-project/interview_site/scripts/activate
+
+If this doesn't work, proceed for the sake of demonstrating the project.
+
 8. Change directory to /advise-interview-project/app
 9. Run python (type "python" in command line) and run newServer.py: 
 using the command "python newServer.py"
@@ -21,7 +37,7 @@ Site Usage
 ==========
 1. From their you can enter the site, you'll be directed to the login page
 2. Click "create account" and you'll be directed to the create account page
-3. Fill out the create account form correctly and you're user account will be 
+3. Fill out the create account form correctly and your user account will be 
 added to the database.
 NOTE: must be a company email (i.e. must have a '@advisetechnologies.com' or '@adviserms.com' domain)
 NOTE: you cannot create an account where "email" and "confirm email" don't match or "password"
