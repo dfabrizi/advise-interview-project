@@ -24,15 +24,21 @@ Password: <input class="psw" type="Password" name="Password">
 var login = function () {
 	var username = $('.usr').val();
 	var password = $('.psw').val();
-	console.log(username, password);
+
+	var olddate = new Date();
+	console.log(olddate.toUTCString());
+	olddate.setTime(olddate.getTime() + 120000);
+	console.log(olddate.toUTCString());
+
 	$.ajax({
 		type: 'POST',
 		url: "http://localhost:5000/login",
-		data: {'username': username, 'password': password}
+		data: { 'username': username, 'password': password }
 	}).done(function (res) {
 		console.log(res);
 		if (res === "login accepted") {
-			document.cookie = "username" + "=" + username;
+			var cookiesen = "username=" + username + "; expires=" + olddate.toUTCString();
+			document.cookie += cookiesen; 
 			window.location.href="http://localhost:5000/interviews";
 		} else {
 			$('.login-box').append("<p style='color: red'> Username/Password combination incorrect</p>");

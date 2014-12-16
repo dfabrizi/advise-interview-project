@@ -26,14 +26,17 @@ def greeting ():
 @app.route('/login', methods=["GET", "POST"])
 def login():
 	if request.method == "POST":
-		print request.form['username'], request.form['password']
+		# print request.form['username'], request.form['password']
 		user = request.form['username']
 		ph = passHash(request.form['password'])
 		con = sqlite3.connect('interviewer.db')
-		c=con.cursor()
+		c = con.cursor()
 		c.execute("""SELECT passhash FROM users WHERE UserName=?""", [user])
-		dbpasshash=c.fetchone()
+		dbpasshash = c.fetchone()
 		con.close()
+		if dbpasshash is None:
+			return "login denied"
+
 		if dbpasshash[0] == ph:
 			message = "login accepted"
 			return message

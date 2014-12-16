@@ -11,26 +11,18 @@ body {
 </style>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script> 
-function getCookie(username) {
-    var name = username + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
-    }
-    return "";
-}
-
 function checkCookie() {
-    var user = getCookie("username");
-    if (!user) {
+    var user = document.cookie.search(/username=/);
+
+    console.log(user, " is currently logged in");
+
+    if (user <= -1) {
         window.location.href= "http://localhost:5000/login";
     }
 }
 </script>
 </head>
-<body onpageshow="getCookie();checkCookie();">
+<body onpageshow="checkCookie()">
  
  <h1>Interviews</h1>
 <u><h2>Old Interviews</h2></u>
