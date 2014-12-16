@@ -20,6 +20,26 @@ Site Usage
 ==========
 1. From their you can enter the site, you'll be directed to the login page
 2. Click "create account" and you'll be directed to the create account page
-3. Fill out the create account form correctly and you're user account will be added to the database
-NOTE: must be a company email -- i.e. must have an '@advisetechnologies.com' domain
-4. Then you can navigate back to the login and your username and password will be accepted.
+3. Fill out the create account form correctly and you're user account will be 
+added to the database.
+NOTE: must be a company email (i.e. must have a '@advisetechnologies.com' or '@adviserms.com' domain)
+NOTE: you cannot create an account where "email" and "confirm email" don't match or "password"
+and "confirm password" do not match
+4. After you have created your account, you will be redirected to the login page,
+where you can enter your username and password.
+5. Once logged in, you will be directed to the "interviews" page." Here you will see
+a section called "Old Interviews," which contains a listing of test interviews I've
+entered to make sure the site was functioning properly.
+6. At the bottom, you will see a "New Interviews" Section, where there are two interview
+formats for positions I saw listed on advisetechnologies.com. As an intern I can work
+on creating interview templates for other open positions. The questions I created were
+based on the position requirements and responsibilities listed on the Advise website.
+7. You can select either of those interview formats - either "New Interview - Junior SQL Developer"
+or "New Interview - Mid-Level C#/SQL Developer". There you can fill out interviews, which
+will be submitted to the database for tracking once you click "submit".
+8. In addition, upon submitting a new interview, you will be redirected to the original
+"Interviews" page, where you will find a new link has been added to the list of interviewee
+names.
+9. When you click on the name of the candidate you entered, you will be directed to
+a page that grabs the interview data from the database and puts it into the interview
+form. This is how you will see previous interviews, thus tracking interview data.
