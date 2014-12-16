@@ -24,7 +24,7 @@ function getCookie(username) {
 
 function checkCookie() {
     var user = getCookie("username");
-    if (user) {
+    if (!user) {
         window.location.href= "http://localhost:5000/login";
     }
 }
