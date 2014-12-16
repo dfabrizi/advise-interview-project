@@ -24,11 +24,10 @@ function getCookie(username) {
 
 function checkCookie() {
     var user = getCookie("username");
-    if (user != "") {
-        window.location.href="http://localhost:5000/interviews";
+    if (user) {
+        window.location.href= "http://localhost:5000/interviews";
     } else {
-        window.location.href="http://localhost:5000/login";
-        }
+        window.location.href= "http://localhost:5000/login";
     }
 }
 </script>
