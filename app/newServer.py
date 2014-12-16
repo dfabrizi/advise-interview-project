@@ -19,7 +19,6 @@ def dict_factory(cursor, row):
 @app.route('/')
 @app.route('/index')
 def greeting ():
-    #return 'normal string'
     return render_template('index.html')
  		
 @app.route('/login', methods=["GET", "POST"])
@@ -69,7 +68,7 @@ def account():
 		c.execute("""select * from users""")
 		con.commit()
 		con.close();
-		return 'Account created.'
+		return render_template('Login.html')
 	else :
 		return render_template('Account.html')
 

@@ -2,6 +2,13 @@
 <html>
 <head>
 <Title>Create Account</title>
+<style>
+body { 
+	background-color: #7FFFD4;
+	color: #191970;
+	font-family: "Georgia", serif;
+}
+</style>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
@@ -45,6 +52,8 @@ $('.account-form').submit(function (event) {
 	var cpassword = $('form [name="Confirm_Password"]').val();
 	
 	var atInd = $('form [name="Email"]').val().indexOf("@advisetechnologies.com");
+	
+	var atIndRMS = $('form [name="Email"]').val().indexOf("@adviserms.com");
 
 	if (email !== cemail){
 		event.preventDefault();
@@ -56,7 +65,7 @@ $('.account-form').submit(function (event) {
 		$('form').append("<p>Passwords don't match.</p>");
 	}	
 	
-	if (atInd === -1) {
+	if (atInd === -1 && atIndRMS === -1) {
 		event.preventDefault();
 		$('form').append("<p>Not a company email.</p>");
 	}
