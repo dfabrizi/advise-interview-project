@@ -2,19 +2,38 @@
 <html>
 <head>
 <title>Junior SQL Developer Interview</title>
+<style>
+body { 
+	background-color: #7FFFD4;
+	color: #191970;
+	font-family: "Georgia", serif;
+}
+</style>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script> 
+function getCookie(username) {
+    var name = username + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
 function checkCookie() {
-    var username=getCookie("username");
-    if (username!="") {
-        window.location.href="http://localhost:5000/interviews/jrsqldev;
-    }else{
-        window.location.href="http://localhost:5000/login"
+    var user = getCookie("username");
+    if (user != "") {
+        window.location.href="http://localhost:5000/interviews/jrsqldev";
+    } else {
+        window.location.href="http://localhost:5000/login";
         }
-    } 
+    }
+}
 </script>
 </head>
-<body>
+<body onpageshow="getCookie();checkCookie();">
 <h1>Junior SQL Developer Interview</h1>
 
 {% if data %}

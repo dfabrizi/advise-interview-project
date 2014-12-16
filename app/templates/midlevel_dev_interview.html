@@ -2,20 +2,69 @@
 <html>
 <head>
 <title>Mid-Level C#/SQL Developer Interview</title>
+<style>
+body { 
+	background-color: #7FFFD4;
+	color: #191970;
+	font-family: "Georgia", serif;
+}
+</style>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script> 
+function getCookie(username) {
+    var name = username + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
 function checkCookie() {
-    var username=getCookie("username");
-    if (username!="") {
-        window.location.href="http://localhost:5000/interviews/midlevel_dev;
-    }else{
-        window.location.href="http://localhost:5000/login"
+    var user = getCookie("username");
+    if (user != "") {
+        window.location.href="http://localhost:5000/interviews/midlevel_dev";
+    } else {
+        window.location.href="http://localhost:5000/login";
         }
-    } 
+    }
+}
 </script>
 </head>
-<body>
+<body onpageshow="getCookie();checkCookie();">
 <h1>Mid-Level C#/SQL Developer Interview</h1>
+{% if data %}
+<form class="midlevel-form">
+Candidate Name: <br><input type="text" name="candidate" value="{{data[0]['candidate']}}" required>
+<br>
+Candidate Email: <br><input type="text" name="candidate_email" value="{{data[0]['candidate_email']}}" required>
+<br>
+Candidate Phone Number: <br><input type="number" name="candidate_phone" value="{{data[0]['candidate_phone']}}" required>
+<br>
+How many years of relevant experience do you have?: <br>
+<input type="number" name="years_experience" value="{{data[0]['years_experience']}}" required>
+<br>
+How fluent are you in C#/.NET?: <br><input type="text" name="c_sharp_fluency" value="{{data[0]['c_sharp_fluency']}}" required>
+<br>
+Do you have a solid SQL knowledge base?: <br><input type=text" name="sql_base" value="{{data[0]['sql_base']}}" required>
+<br>
+How is your facility with large datasets?: <br>
+<input type="text" name="facility_large_datasets" value="{{data[0]['facility_large_datasets']}}" required>
+<br>
+What is your greatest weakness?: <br><input type="text" name="weaknesses" value="{{data[0]['weaknesses']}}" required>
+<br>
+Why do you want to work for Advise Technologies?: <br>
+<input type="text" name="why_advise" value="{{data[0]['why_advise']}}" required>
+<br>
+Do you have any questions about the position or the company?: <br>
+<input type="text" name="questions" value="{{data[0]['questions']}}" required>
+<br>
+<input type="submit" name="Submit" formmethod="post" formaction="/interviews/midlevel_dev">
+</form>
+
+{% else %}
 <form class="midlevel-form">
 Candidate Name: <br><input type="text" name="candidate" required>
 <br>
@@ -43,5 +92,6 @@ Do you have any questions about the position or the company?: <br>
 <br>
 <input type="submit" name="Submit" formmethod="post" formaction="/interviews/midlevel_dev">
 </form>
+{% endif %}
 </body>
 </html>

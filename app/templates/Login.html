@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body { 
+	background-color: #7FFFD4;
+	color: #191970;
+	font-family: "Georgia", serif;
+}
+</style>	
 <title> Advise Interview Login </title>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
@@ -25,7 +32,7 @@ var login = function () {
 	}).done(function (res) {
 		console.log(res);
 		if (res === "login accepted") {
-			document.cookie = "username=" + username;
+			document.cookie = "username" + "=" + username;
 			window.location.href="http://localhost:5000/interviews";
 		} else {
 			$('.login-box').append("<p style='color: red'> Username/Password combination incorrect</p>");

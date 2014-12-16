@@ -136,10 +136,10 @@ def load_form(name, job_id):
 	elif job_id is 2:
 		c.execute("""SELECT * FROM midlevel_dev_interview WHERE candidate=?""", [name])
 		data = c.fetchall()
-		keys = data[0].keys()	
+		keys = data[0].keys()
+		return render_template('midlevel_dev_interview.html', data=data, keys=keys)		
 	con.close()
 	return render_template('loaded_form.html', data=data, keys=keys)
-	
 
 # Start app
 if __name__ == '__main__':

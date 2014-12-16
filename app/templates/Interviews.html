@@ -2,24 +2,43 @@
  <html>
  <head>
  <title>Interviews</title>
+ <style>
+body { 
+	background-color: #7FFFD4;
+	color: #191970;
+	font-family: "Georgia", serif;
+}
+</style>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script> 
+function getCookie(username) {
+    var name = username + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
 function checkCookie() {
-    var username=getCookie("username");
-    if (username!="") {
-        window.location.href="http://localhost:5000/interviews;
-    }else{
-        window.location.href="http://localhost:5000/login"
+    var user = getCookie("username");
+    if (user != "") {
+        window.location.href="http://localhost:5000/interviews";
+    } else {
+        window.location.href="http://localhost:5000/login";
         }
-    } 
+    }
+}
 </script>
 </head>
-<body>
+<body onpageshow="getCookie();checkCookie();">
  
  <h1>Interviews</h1>
- <h2>Old Interviews</h2>
+<u><h2>Old Interviews</h2></u>
  {% if jr %}
- 	<h3>Jr Interviews</h3>
+ 	<i><h3>Jr Interviews</h3></i>
  	<ol>
  	{% for r in jr %}
  		<li><a href="/interviews/loaded_form/{{r['candidate']}}{{1}}">{{r['candidate']}}</a></li>
@@ -28,7 +47,7 @@ function checkCookie() {
  {% endif %}
  
  {% if mid %}
- 	<h3>Mid Level Interviews</h3>
+ 	<i><h3>Mid Level Interviews</h3></i>
  	 	<ol>
  	{% for r in mid %}
  		<li><a href="/interviews/loaded_form/{{r['candidate']}}{{2}}">{{r['candidate']}}</a></li>
@@ -38,7 +57,7 @@ function checkCookie() {
   <!-- RETRIEVE INTERVIEWS AND STORE LINKS HERE -->
   
   
- <h2>New Interviews</h2>
+ <u><h2>New Interviews</h2></u>
 <p><a href="/interviews/jrsqldev" onclick="checkCookie()">New Interview - Junior SQL Developer</a></p>
 <p><a href="/interviews/midlevel_dev" onclick="checkCookie()">New Interview - Mid-Level C#/SQL Developer</a></p>
  </body>
