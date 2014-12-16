@@ -1,26 +1,25 @@
 Launch Instructions:
 
+Installing
+==========
 1. Install python 2.7.9 : https://www.python.org/downloads/
 2. In command line (i.e. windows powershell), navigate to directory 
 where "advise-interview-project" folder is stored
-2. Run python in command line (i.e. windows powershell): using "python" command
-3. Install flask (while running python): using "pip install Flask"
-4. Import modules: using 
-"pip install flask.ext"
-"from flask.ext import login"
-"from flask import Flask, render_template, Request, request, redirect, url_for"
-"import sqlite 3"
-"import hashlib"
-5. Exit python: using ctrl+"c"
-6. Run virtual environment by changing directory, specifying entire path through:
+3. Run python in command line (i.e. windows powershell): using "python" command
+4. Install flask (while running python): using "pip install Flask"
+5. Install Virtual Environment: using "pip install virtualenv"
+6. Exit python: using ctrl+"c"
+7. Run virtual environment by changing directory, specifying entire path through:
 /advise-interview-project/interview_site/scripts/activate
-5. Change directory to /advise-interview-project/app
-6. Run python ("python") and run newServer.py: using "python newServer.py"
-7. Now, the server should be up and running on port 5000
-8. Go to browser (preferably google chrome) and type "localhost:5000"
-9. From their you can enter the site, you'll be directed to the login page
-10. Click "create account" and you'll be directed to the create account page
-11. Fill out the create account form correctly and you're user account will be added to the database
-NOTE: must be a company email -- i.e. must have an '@advisetechnologies.com' domain
-12. Then you can navigate back to the login and your username and password will be accepted.
+8. Change directory to /advise-interview-project/app
+9. Run python ("python") and run newServer.py: using "python newServer.py"
+10. Now, the server should be up and running on port 5000
+11. Go to browser (preferably google chrome) and type "localhost:5000"
 
+Site Usage
+==========
+1. From their you can enter the site, you'll be directed to the login page
+2. Click "create account" and you'll be directed to the create account page
+3. Fill out the create account form correctly and you're user account will be added to the database
+NOTE: must be a company email -- i.e. must have an '@advisetechnologies.com' domain
+4. Then you can navigate back to the login and your username and password will be accepted.

@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1> Create Account </h1>
-<form class="account-form">
+<form class="account-form" method="POST">
 First Name: <br><input type="text" name="first name" required>
 <br>
 Last Name: <br><input type="text" name="last name" required>
@@ -31,7 +31,7 @@ Password: <br><input type="Password" name="Password" min="6" required>
 <br>
 Confirm Password: <br><input type="Password" name="Confirm_Password" required>
 <br>
-<input type="submit" name="Submit" formaction="/Login" required>
+<input type="submit" name="Submit" formaction="/accounts" required>
 </form>
 <!-- The following tests that email and password match
 their respective confirmations. Also tests if email has 

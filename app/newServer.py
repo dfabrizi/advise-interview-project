@@ -1,5 +1,4 @@
 from flask import Flask, render_template, Request, request, redirect, url_for
-from flask.ext import login
 import sqlite3
 import hashlib
 
@@ -68,6 +67,9 @@ def account():
 		c = con.cursor()
 		c.execute("""insert into users(email, username, passhash) values(?, ?, ?)""", [email, user, password])
 		c.execute("""select * from users""")
+		con.commit()
+		con.close();
+		return 'Account created.'
 	else :
 		return render_template('Account.html')
 
@@ -116,7 +118,7 @@ def midlevel_dev():
 		con = sqlite3.connect('interviewer.db')
 		c = con.cursor()
 		c.execute("""insert into midlevel_dev_interview (candidate, candidate_email, candidate_phone, years_experience,
-		c_sharp_fluency, sql_base, facility_large_datasets, weaknesses, why_advise, questions) valyes (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+		c_sharp_fluency, sql_base, facility_large_datasets, weaknesses, why_advise, questions) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
 		[cand, cem, cphone, exp, cflu, sql, large, weak, whyadv, quest])
 		#c.execute("""select * from midlevel_dev""")
 		con.commit()
