@@ -57,7 +57,7 @@ def Interviews():
 		
 @app.route('/accounts', methods=["GET", "POST"])
 def account():
-    if request.method == 'POST':
+	if (request.method == 'POST'):
 		email = request.form['Email']
 		user = request.form['UserName']
 		password = passHash(request.form['Password'])
@@ -65,6 +65,8 @@ def account():
 		c = con.cursor()
 		c.execute("""insert into users(email, username, passhash) values(?, ?, ?)""", [email, user, password])
 		c.execute("""select * from users""")
+	else :
+		return render_template('Account.html')
 
 
 # Views
