@@ -22,13 +22,10 @@ function getCookie(username) {
 
 function checkCookie() {
     var user = getCookie("username");
-    if (user != "") {
-        window.location.href="http://localhost:5000/interviews/loaded_form/<name><int:job_id>";
-    } else {
+    if (!user) {
         window.location.href="http://localhost:5000/login";
         }
     }
-}
 </head>
 <body onpageshow="getCookie();checkCookie();">
 

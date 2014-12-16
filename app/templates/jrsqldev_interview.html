@@ -24,13 +24,10 @@ function getCookie(username) {
 
 function checkCookie() {
     var user = getCookie("username");
-    if (user != "") {
-        window.location.href="http://localhost:5000/interviews/jrsqldev";
-    } else {
+    if (!user) {
         window.location.href="http://localhost:5000/login";
         }
     }
-}
 </script>
 </head>
 <body onpageshow="getCookie();checkCookie();">
