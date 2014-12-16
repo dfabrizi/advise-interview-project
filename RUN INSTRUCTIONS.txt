@@ -5,14 +5,15 @@ Installing
 1. Install python 2.7.9 : https://www.python.org/downloads/
 2. In command line (i.e. windows powershell), navigate to directory 
 where "advise-interview-project" folder is stored
-3. Run python in command line (i.e. windows powershell): using "python" command
-4. Install flask (while running python): using "pip install Flask"
-5. Install Virtual Environment: using "pip install virtualenv"
-6. Exit python: using ctrl+"c"
+3. Run python in command line (i.e. windows powershell): using the command "python"
+4. Install flask (while running python): using the command "pip install Flask"
+5. Install Virtual Environment: using the command "pip install virtualenv"
+6. Exit python: using  the command ctrl+"c"
 7. Run virtual environment by changing directory, specifying entire path through:
 /advise-interview-project/interview_site/scripts/activate
 8. Change directory to /advise-interview-project/app
-9. Run python ("python") and run newServer.py: using "python newServer.py"
+9. Run python (type "python" in command line) and run newServer.py: 
+using the command "python newServer.py"
 10. Now, the server should be up and running on port 5000
 11. Go to browser (preferably google chrome) and type "localhost:5000"
 
@@ -43,3 +44,8 @@ names.
 9. When you click on the name of the candidate you entered, you will be directed to
 a page that grabs the interview data from the database and puts it into the interview
 form. This is how you will see previous interviews, thus tracking interview data.
+
+For your Information
+=========
+the Database is: 'interviewer.db' and was created and queryed with SQLite3
+the server is found in: 'newServer.py' and was created using a flask framework within python.
