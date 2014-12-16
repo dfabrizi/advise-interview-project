@@ -50,4 +50,3 @@ For your Information
 the Database is: 'interviewer.db' and was created and queryed with SQLite3
 the server is found in: 'newServer.py' and was created using a flask framework within python.
 the project is on my GitHub at: https://github.com/dfabrizi/advise-interview-project
-however further installation instructions are required for this repository to run the same way.
